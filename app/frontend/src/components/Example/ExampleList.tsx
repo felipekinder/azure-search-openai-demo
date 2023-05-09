@@ -10,10 +10,13 @@ export type ExampleModel = {
 const EXAMPLES: ExampleModel[] = [
     {
         text: "Qual a missão da empresa?",
-        value: "Qual a missão da empresa?"
+        value: "Qual a missão da E-Create?"
     },
-    { text: "Qual o plano de saúde da empresa?", value: "Qual o plano de saúde da empresa?" },
-    { text: "O que é o Termo do Confidencialidade?", value: "O que é o Termo do Confidencialidade?" }
+    { text: "Qual o plano de saúde da empresa?", value: "Qual o plano de saúde da E-Create?" },
+    {
+        text: " A empresa tem normas e procedimentos para a conduta dos funcionários no ambiente de trabalho?",
+        value: "A empresa tem normas e procedimentos para a conduta dos funcionários no ambiente de trabalho?"
+    }
 ];
 
 interface Props {
