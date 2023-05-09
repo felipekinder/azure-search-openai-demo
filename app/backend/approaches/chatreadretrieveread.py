@@ -50,7 +50,7 @@ Search query:
 
     def run(self, history: list[dict], overrides: dict) -> any:
         use_semantic_captions = True if overrides.get("semantic_captions") else False
-        top = overrides.get("top") or 3
+        top = overrides.get("top") or 5
         exclude_category = overrides.get("exclude_category") or None
         filter = "category ne '{}'".format(exclude_category.replace("'", "''")) if exclude_category else None
 
@@ -70,7 +70,7 @@ Search query:
             r = self.search_client.search(q, 
                                           filter=filter,
                                           query_type=QueryType.SEMANTIC, 
-                                          query_language="en-us", 
+                                          query_language="pt-br", 
                                           query_speller="lexicon", 
                                           semantic_configuration_name="default", 
                                           top=top, 
