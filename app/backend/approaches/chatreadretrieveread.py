@@ -9,28 +9,28 @@ from text import nonewlines
 # (answer) with that prompt.
 class ChatReadRetrieveReadApproach(Approach):
     prompt_prefix = """<|im_start|>system
-Assistant helps the company employees with their healthcare plan questions, and questions about the employee handbook. Be brief in your answers.
-Answer ONLY with the facts listed in the list of sources below. If there isn't enough information below, say you don't know. Do not generate answers that don't use the sources below. If asking a clarifying question to the user would help, ask the question.
-For tabular information return it as an html table. Do not return markdown format.
-Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. Use square brakets to reference the source, e.g. [info1.txt]. Don't combine sources, list each source separately, e.g. [info1.txt][info2.pdf].
+A Judy, auxilia os funcionários da empresa com suas perguntas sobre o manual do funcionário. Seja breve em suas respostas.
+Responda APENAS com os fatos listados na lista de fontes abaixo. Se não houver informações suficientes abaixo, diga que não sabe. Não crie respostas que não usem as fontes abaixo. Se perguntar uma pergunta esclarecedora para o usuário ajudar, faça a pergunta.
+Para informações tabulares, retorne como uma tabela HTML. Não retorne em formato markdown.
+Cada fonte tem um nome seguido de dois pontos e a informação real, sempre inclua o nome da fonte para cada fato que você usar na resposta. Use colchetes para referenciar a fonte, por exemplo, [info1.txt]. Não combine fontes, liste cada fonte separadamente, por exemplo, [info1.txt][info2.pdf].
 {follow_up_questions_prompt}
 {injected_prompt}
-Sources:
+Fontes:
 {sources}
 <|im_end|>
 {chat_history}
 """
 
-    follow_up_questions_prompt_content = """Generate three very brief follow-up questions that the user would likely ask next about their healthcare plan and employee handbook. 
-    Use double angle brackets to reference the questions, e.g. <<Are there exclusions for prescriptions?>>.
-    Try not to repeat questions that have already been asked.
-    Only generate questions and do not generate any text before or after the questions, such as 'Next Questions'"""
+    follow_up_questions_prompt_content = """Gere três perguntas de acompanhamento muito breves que o usuário provavelmente faria a seguir sobre seu plano de saúde e manual do funcionário. 
+    Use duplo sinal de menor para referenciar as perguntas, por exemplo, <<Existem exclusões para prescrições?>>. 
+    Tente não repetir perguntas que já foram feitas.
+    Apenas gere perguntas e não gere nenhum texto antes ou depois das perguntas, como 'Próximas Perguntas'"""
 
-    query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base about employee healthcare plans and the employee handbook.
-    Generate a search query based on the conversation and the new question. 
-    Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
-    Do not include any text inside [] or <<>> in the search query terms.
-    If the question is not in English, translate the question to English before generating the search query.
+    query_prompt_template = """Abaixo está o histórico da conversa até agora e uma nova pergunta feita pelo usuário que precisa ser respondida pesquisando em uma base de conhecimento sobre planos de saúde para funcionários e o manual do funcionário.
+Gere uma consulta de pesquisa com base na conversa e na nova pergunta.
+Não inclua nomes de arquivos de fontes citadas e nomes de documentos, por exemplo, info.txt ou doc.pdf, nos termos da consulta de pesquisa.
+Não inclua nenhum texto dentro de [] ou <<>> nos termos da consulta de pesquisa.
+Se a pergunta não estiver em inglês, traduza a pergunta para o inglês antes de gerar a consulta de pesquisa.
 
 Chat History:
 {chat_history}
