@@ -181,7 +181,7 @@ const Chat = () => {
                     <div className={styles.chatInput}>
                         <QuestionInput
                             clearOnSend
-                            placeholder="Type a new question (e.g. Qual a jornada de trabalho da empresa?)"
+                            placeholder="Digite sua pergunta (ex: Qual a jornada de trabalho da empresa?)"
                             disabled={isLoading}
                             onSend={question => makeApiRequest(question)}
                         />
